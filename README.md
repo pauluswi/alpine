@@ -1,6 +1,10 @@
 # Alpine
 Is a microservice which provides credential (pin) service for application users. 
 
+![Build](https://github.com/pauluswi/alpine/actions/workflows/build.yml/badge.svg)
+[![codecov](https://codecov.io/gh/pauluswi/alpine/branch/master/graph/badge.svg)](https://codecov.io/gh/pauluswi/alpine)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 ## Description
 A transactional-based token usually used for transactions at merchant or retail store such as purchasing goods and use ewallet as a payment method. The customer's ewallet app will produce a payment token and merchant can use it to initiate payment processing.
 alpine will provide payment token service like generate a transaction-based token and this token can be used for one specific transaction only, validate the token and query all payment tokens based on customer ID.
