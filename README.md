@@ -12,7 +12,7 @@ Credential are stored at hashed format with salt.
 
 ## Project Layout
 
-alpine uses the following project layout:
+Alpine uses the following project layout:
  
 ```
 .
@@ -150,31 +150,7 @@ We can use golang test package.
 
 ```shell
 $ go test -v internal/pin/*.go -race -coverprofile=coverage.out
-=== RUN   TestAPI
-=== RUN   TestAPI/get_all
-=== RUN   TestAPI/get_unknown
-=== RUN   TestAPI/generate_ok
-=== RUN   TestAPI/generate_auth_error
-=== RUN   TestAPI/generate_input_error
-=== RUN   TestAPI/validate_ok
-=== RUN   TestAPI/validate_auth_error
-=== RUN   TestAPI/validate_input_error
---- PASS: TestAPI (0.00s)
-    --- PASS: TestAPI/get_all (0.00s)
-    --- PASS: TestAPI/get_unknown (0.00s)
-    --- PASS: TestAPI/generate_ok (0.00s)
-    --- PASS: TestAPI/generate_auth_error (0.00s)
-    --- PASS: TestAPI/generate_input_error (0.00s)
-    --- PASS: TestAPI/validate_ok (0.00s)
-    --- PASS: TestAPI/validate_auth_error (0.00s)
-    --- PASS: TestAPI/validate_input_error (0.00s)
-=== RUN   TestRepository
---- PASS: TestRepository (0.16s)
-=== RUN   Test_service_TokenCycle
---- PASS: Test_service_TokenCycle (0.00s)
-PASS
-coverage: 78.1% of statements
-ok      command-line-arguments  0.671s  coverage: 78.1% of statements
+
 ```
 
 ## Deployment
