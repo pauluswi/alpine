@@ -14,6 +14,7 @@ Hashed Pin = base64 encoded[sha512(pin+ salt)]
 Example:
 
 Origin Pin = 123456
+
 Hashed Pin = ddivu2QSb2hIk9uGpihW3v2KwkEoHeyIk7GiE96OfxeuXXIK9JazAeWmvbtQLCiZJVLz7qWZoQUN9vJ3WJHOHw==
 
 ---
