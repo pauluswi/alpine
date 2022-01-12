@@ -6,8 +6,13 @@ Credential are stored at hashed format with salt.
 [![codecov](https://codecov.io/gh/pauluswi/alpine/branch/master/graph/badge.svg)](https://codecov.io/gh/pauluswi/alpine)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-## Description
 
+---
+
+Hashed Pin = encode[sha512(pin)) + salt]
+
+---
+A salt is added to the hashing process to force their uniqueness, increase their complexity without increasing user requirements, and to mitigate password attacks like hash tables
 
 
 ## Project Layout
@@ -69,10 +74,10 @@ It provides the following endpoints:
 
 * `GET /healthcheck`: a healthcheck service provided for health checking purpose (needed when implementing a server cluster)
 * `POST /v1/login`: authenticates a user and generates a JWT
-* `POST /v1/create`: xxxx
-* `POST /v1/change`: xxxx
-* `POST /v1/validate`: xxxx
-* `GET /v1/get/:customer_id`: xxx
+* `POST /v1/create`: create a pin
+* `POST /v1/change`: change a pin
+* `POST /v1/validate`: validate the pin is valid or not
+* `GET /v1/get/:customer_id`:return pin information belongs to a customer
 
 Try the URL `http://localhost:8080/healthcheck` in a browser, and you should see something like `"OK v1.0.0"` displayed.
 
@@ -88,15 +93,6 @@ curl -X POST -H "Content-Type: application/json" -d '{"username": "demo", "passw
 # start example
 curl -X GET -H "Authorization: Bearer ...JWT token here..." http://localhost:8080/v1/xxx
 # end example 
-
-# with the above JWT token, hit a endpoint to generate a payment token
-curl -X POST -H "Content-Type: application/json" -d '{"customer_id": "08110001"}' -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDE0NjQ2OTksImlkIjoiMTAwIiwibmFtZSI6ImRlbW8ifQ.WYS5mX_UGUWu4nf_u-FHBpkLKKSf2YL3xwdBzqooYbU" http://localhost:8080/v1/generate
-
-# with the above JWT token, hit a endpoint to validate a payment token
-curl -X POST -H "Content-Type: application/json" -d '{“token”: "343758"}' -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDE0NjQ2OTksImlkIjoiMTAwIiwibmFtZSI6ImRlbW8ifQ.WYS5mX_UGUWu4nf_u-FHBpkLKKSf2YL3xwdBzqooYbU" http://localhost:8080/v1/validate
-
-# with the above JWT token, hit a endpoint to get all payment token for a specific customer
-curl -X GET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDE0NjQ2OTksImlkIjoiMTAwIiwibmFtZSI6ImRlbW8ifQ.WYS5mX_UGUWu4nf_u-FHBpkLKKSf2YL3xwdBzqooYbU" http://localhost:8080/v1/getpaytokens/08110001
 
 ```
 
