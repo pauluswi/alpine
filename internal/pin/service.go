@@ -18,11 +18,6 @@ type Service interface {
 	Change(ctx context.Context, req entity.Input) (err error)
 }
 
-// // pin represents the data about an payment token.
-// type pin struct {
-// 	entity.Pin
-// }
-
 type service struct {
 	repo   Repository
 	logger log.Logger
@@ -137,6 +132,13 @@ func (s service) Change(ctx context.Context, req entity.Input) (err error) {
 		err = fmt.Errorf("%w: %s", ErrValidation, err)
 		return err
 	}
+	
+	// ** I use a very simple algorithm to encrypt pin / credential
+	// ** in real world the algorithm must be more details and secure
+	// First generate random 16 byte salt
+	var salt = GenerateRandomSalt(saltSize)
+	// Hash password using the salt
+	var hashedPassword = HashPassword(req.Credential, salt)
 
 	currPin, err := s.repo.Get(ctx, req.CustomerID)
 	if err != nil {
@@ -147,7 +149,7 @@ func (s service) Change(ctx context.Context, req entity.Input) (err error) {
 	var pin entity.Pin
 	pin.ID = currPin.ID
 	pin.Status = req.Status
-	pin.Credential = req.Credential
+	pin.Credential = hashedPassword
 	pin.UpdatedAt = time.Now()
 
 	err = s.repo.Update(ctx, pin)
