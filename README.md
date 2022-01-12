@@ -9,7 +9,7 @@ Credential are stored at hashed format with salt.
 
 ---
 
-Hashed Pin = encode[sha512(pin)) + salt]
+Hashed Pin = base64 encoded[sha512(pin+ salt)]
 
 ---
 A salt is added to the hashing process to force their uniqueness, increase their complexity without increasing user requirements, and to mitigate password attacks like hash tables
