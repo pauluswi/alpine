@@ -11,6 +11,8 @@ Credential are stored at hashed format with salt.
 
 Hashed Pin = base64 encoded[sha512(pin+ salt)]
 
+Example of Hashed Pin = ddivu2QSb2hIk9uGpihW3v2KwkEoHeyIk7GiE96OfxeuXXIK9JazAeWmvbtQLCiZJVLz7qWZoQUN9vJ3WJHOHw==
+
 ---
 A salt is added to the hashing process to force their uniqueness, increase their complexity without increasing user requirements, and to mitigate password attacks like hash tables
 
